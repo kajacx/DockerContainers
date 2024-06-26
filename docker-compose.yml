@@ -1,0 +1,22 @@
+version: "3"
+services:
+  swag:
+    image: linuxserver/swag
+    container_name: swag
+    ports:
+      - 80:80
+      - 443:443
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Prague
+      - URL=kajacx.cz
+      - EXTRA_DOMAINS=liquislime.com
+      - VALIDATION=http
+      - SUBDOMAINS=uvmdemo,uvmadminer,portainer,compile,play
+    volumes:
+      - ./config:/config
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+
