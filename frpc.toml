@@ -1,0 +1,21 @@
+serverAddr = "kajacx.cz"
+serverPort = 7000
+
+auth.method = "token"
+auth.token = "{{ .Envs.FRP_AUTH_TOKEN }}"
+
+webServer.addr = "0.0.0.0"
+webServer.port = 7400
+
+webServer.user = "admin"
+webServer.password = "{{ .Envs.FRP_DASHBOARD_PASSWORD }}"
+
+
+# Just an example, you would want to use a "normal" reverse proxy (like ngxing's)
+# for redirecting traffic to a public server.
+[[proxies]]
+name = "google-example"
+type = "tcp"
+localIP = "google.com"
+localPort = 80
+remotePort = 8585
